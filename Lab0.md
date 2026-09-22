@@ -33,6 +33,14 @@ www.minecraft.net
 Which protocols does this DNS packet use? List the protocols from Layer 2 to Layer 5 in the TCP/IP five-layer model:
 Layer 2: Ethernet II
 Layer 3: Internet Protocol Version 6 (IPv6)
-Layer 4: Transmission Datagram Protocol
+Layer 4: Transmission Control Protocol
 Layer 5: Domain Name System (DNS)
 <img width="2550" height="1358" alt="image" src="https://github.com/user-attachments/assets/ed33542d-ade3-4367-8612-6ba5b78edf3d" />
+
+## 3. Access an HTTP page
+Which HTTP page did you access?
+
+
+What are the IP address and port number of the server hosting the page?
+What is the HTTP request method?
+What is the HTTP response status code, and what does it mean?
