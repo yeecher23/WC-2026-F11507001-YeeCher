@@ -7,7 +7,10 @@ Which website did you access?
 - Minecraft (https://www.minecraft.net/en-us)
 
 What are the IP address and port number of the website server?
-IP address: 203.211.2.43, port number: 443
+- IP address: 203.211.2.43, port number: 443
+
 What are the IP address and source port number of your PC when initially accessing the website?
+- IP address: 192.168.0.154, port number: 50961
 
 What is the process of the TCP three-way handshake?
+- The computer requests for a connection and sends a starting sequence number SYN. The server acknowledges the sequence number with an ACK and sends its own sequence number SYN. The computer then acknowledges the server's sequence number with an ACK.
