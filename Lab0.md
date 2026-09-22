@@ -46,6 +46,12 @@ Which HTTP page did you access?
 ### What are the IP address and port number of the server hosting the page?
 <img width="2560" height="1352" alt="image" src="https://github.com/user-attachments/assets/08055eec-096f-43e5-be91-cb55df39c828" />
 - 
+- IP address: 2606:4700:3031::6815:4d2 , port number: 80
 
 ### What is the HTTP request method?
-What is the HTTP response status code, and what does it mean?
+<img width="2552" height="1354" alt="image" src="https://github.com/user-attachments/assets/845261da-f12a-4f55-ac58-539e9a8977dc" />
+- GET
+
+### What is the HTTP response status code, and what does it mean?
+<img width="2544" height="1350" alt="image" src="https://github.com/user-attachments/assets/200130ae-f232-4953-a34f-644f4e3df7db" />
+- Request is successful and server returns to web page resource. 
