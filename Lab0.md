@@ -45,7 +45,6 @@ Which HTTP page did you access?
 
 ### What are the IP address and port number of the server hosting the page?
 <img width="2560" height="1352" alt="image" src="https://github.com/user-attachments/assets/08055eec-096f-43e5-be91-cb55df39c828" />
-- 
 - IP address: 2606:4700:3031::6815:4d2 , port number: 80
 
 ### What is the HTTP request method?
