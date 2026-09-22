@@ -7,14 +7,14 @@ I went to the official Wireshark website (https://www.wireshark.org/#download) a
 Which website did you access?
 - Minecraft (https://www.minecraft.net/en-us)
 
-What are the IP address and port number of the website server?
+### What are the IP address and port number of the website server?
 <img width="2552" height="1382" alt="image" src="https://github.com/user-attachments/assets/93eaee8a-5f6e-4bdf-8019-43f583507321" />
 - IP address: 60.199.191.70 port number: 443
 
-What are the IP address and source port number of your PC when initially accessing the website?
+### What are the IP address and source port number of your PC when initially accessing the website?
 - IP address: 192.168.0.154 , port number: 64115
 
-What is the process of the TCP three-way handshake?
+### What is the process of the TCP three-way handshake?
 <img width="2546" height="1410" alt="image" src="https://github.com/user-attachments/assets/35785d10-d236-494f-a21a-630c6138af1a" />
 1) The computer requests for a connection and sends a starting sequence number SYN.
 
@@ -29,10 +29,10 @@ What are the IP address and port number of the DNS server?
 <img width="2550" height="1360" alt="image" src="https://github.com/user-attachments/assets/5c529dff-8f3e-4ebe-87a1-6e0698df688b" />
 - IP address: 2001:4546:2::1 , port number: 53
 
-What is the domain name in the DNS query?
+### What is the domain name in the DNS query?
 - www.minecraft.net
 
-Which protocols does this DNS packet use? List the protocols from Layer 2 to Layer 5 in the TCP/IP five-layer model:
+### Which protocols does this DNS packet use? List the protocols from Layer 2 to Layer 5 in the TCP/IP five-layer model:
 Layer 2: Ethernet II
 Layer 3: Internet Protocol Version 6 (IPv6)
 Layer 4: Transmission Control Protocol
@@ -43,9 +43,9 @@ Layer 5: Domain Name System (DNS)
 Which HTTP page did you access?
 - http://httpforever.com
 
-What are the IP address and port number of the server hosting the page?
+### What are the IP address and port number of the server hosting the page?
 <img width="2560" height="1352" alt="image" src="https://github.com/user-attachments/assets/08055eec-096f-43e5-be91-cb55df39c828" />
 - 
 
-What is the HTTP request method?
+### What is the HTTP request method?
 What is the HTTP response status code, and what does it mean?
