@@ -12,7 +12,7 @@ What are the IP address and port number of the website server?
 - IP address: 60.199.191.70 port number: 443
 
 What are the IP address and source port number of your PC when initially accessing the website?
-- IP address: 192.168.0.154, port number: 64115
+- IP address: 192.168.0.154 , port number: 64115
 
 What is the process of the TCP three-way handshake?
 1) The computer requests for a connection and sends a starting sequence number SYN. 
@@ -23,3 +23,14 @@ What is the process of the TCP three-way handshake?
 <img width="2530" height="1350" alt="image" src="https://github.com/user-attachments/assets/ee785bb1-fa02-4ba6-97f9-bbf11227c194" />
 
 ## 2. DNS Packet Analysis
+What are the IP address and port number of the DNS server?
+IP address: 2001:4546:2::1 , port number: 53
+
+What is the domain name in the DNS query?
+
+Which protocols does this DNS packet use? List the protocols from Layer 2 to Layer 5 in the TCP/IP five-layer model:
+
+Layer 2: Link Layer
+Layer 3: Network Layer
+Layer 4: Transport Layer
+Layer 5: Application Layer
