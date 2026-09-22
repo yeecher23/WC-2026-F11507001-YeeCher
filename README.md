@@ -1,4 +1,3 @@
-# WC-2026-F11507001-YeeCher
 # Yee Cher's Wireless Communications Notes
 ###### tags: `Wireless Communications`
 
