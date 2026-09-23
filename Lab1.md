@@ -237,6 +237,7 @@ However, the OAI RAN packets use loopback addresses. Manually separate the UE an
 ---
 
 ## 10. Submission and Grading
+
 ```mermaid
 sequenceDiagram
     participant UE
@@ -263,6 +264,7 @@ sequenceDiagram
     UPF->>gNB: GTP-U reply
     gNB->>UE: Reply
 ```
+
 Submit one PDF or Markdown report containing:
 
 - Completed tables
