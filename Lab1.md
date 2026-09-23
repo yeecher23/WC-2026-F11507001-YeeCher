@@ -237,7 +237,32 @@ However, the OAI RAN packets use loopback addresses. Manually separate the UE an
 ---
 
 ## 10. Submission and Grading
+```mermaid
+sequenceDiagram
+    participant UE
+    participant gNB
+    participant AMF
+    participant UPF
+    participant DN as Data Network
 
+    Note over UE,AMF: Control plane
+    UE->>gNB: RRCSetupRequest
+    gNB->>UE: RRCSetup
+    UE->>gNB: RRCSetupComplete + Registration Request
+    gNB->>AMF: InitialUEMessage
+    Note over UE,AMF: Authentication and security via gNB
+    AMF->>UE: Registration Accept (via gNB)
+    UE->>AMF: Registration Complete (via gNB)
+    Note over UE,UPF: PDU session established with SMF support
+
+    Note over UE,DN: User plane
+    UE->>gNB: Ping
+    gNB->>UPF: GTP-U ping
+    UPF->>DN: Ping
+    DN->>UPF: Reply
+    UPF->>gNB: GTP-U reply
+    gNB->>UE: Reply
+```
 Submit one PDF or Markdown report containing:
 
 - Completed tables
