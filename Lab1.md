@@ -20,35 +20,15 @@ Submit:
 
 ## 5. Identify the Basic 5G SA Architecture
 
-Use:
-
-```text
-Statistics → Endpoints → IPv4
-```
-
-Apply these filters individually:
-
-```wireshark
-ngap
-```
-
-```wireshark
-gtp
-```
-
-```wireshark
-icmp
-```
-
 Complete the table:
 
 | Component | IP address | Evidence from the capture |
 |---|---|---|
-| UE PDU address | | |
+| UE PDU address |  | |
 | gNB | 192.168.70.129 | <img width="2560" height="1506" alt="image" src="https://github.com/user-attachments/assets/c8019dc2-840e-4384-a17f-757132fec0c5" /> |
 | AMF | 192.168.70.132 | <img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/d23dfbb6-6d7b-44fc-9b2c-ccf19c6b6a04" /> |
-| UPF |  |  |
-| Data Network |  |  |
+| UPF | 192.168.70.134 | <img width="2560" height="1368" alt="image" src="https://github.com/user-attachments/assets/2f78c97e-a3a0-4f03-acad-bb28218359a3" />|
+| Data Network | 192.168.70.135 | <img width="2560" height="1502" alt="image" src="https://github.com/user-attachments/assets/2d4100cd-b456-44dc-a487-e5f78f329864" />|
 
 Complete the interface table:
 
