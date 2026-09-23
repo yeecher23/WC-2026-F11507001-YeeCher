@@ -134,10 +134,18 @@ Finally, locate:
 
 Answer:
 
-1. What is the role of the gNB when it transports NAS messages?
-2. What is the difference between RRC and NAS signaling?
-3. Is the Registration Request delivered directly from the UE to the AMF? Explain the protocol path.
-4. Which message confirms that Registration has completed successfully?
+### 1. What is the role of the gNB when it transports NAS messages?
+- It acts as a relay, passing NAS messages between UE and AMF.
+
+### 2. What is the difference between RRC and NAS signaling?
+- RRC establishes the connection between UE and gNb while NAS manages access and registration to AMF.
+
+### 3. Is the Registration Request delivered directly from the UE to the AMF? Explain the protocol path.
+- No. The NAS registration request is included within RRCsetupcomplete from UE to gNb. gNb then forwards the request to AMF through NGAP.
+
+### 4. Which message confirms that Registration has completed successfully?
+- UE acknowledges completion
+
 
 ### Checkpoint 4: RRC-to-NGAP/NAS Mapping — 25 points
 
