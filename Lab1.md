@@ -169,7 +169,7 @@ Find the PDU Session Establishment Accept and record the UE address:
 
 | Field | Observed value |
 |---|---|
-| UE IPv4 address |  |
+| UE IPv4 address | 10.0.0.2 |
 
 Apply:
 
@@ -182,8 +182,14 @@ Find one ICMP Echo Request and its Echo Reply. Confirm that the UE's IP packet i
 Answer:
 
 1. What IPv4 address was assigned to the UE?
+- 10.0.0.2
+
 2. How many ICMP Echo Request/Reply pairs are present?
+- There are 10 pairs
+
 3. What does the successful Echo Reply prove about the UE connection?
+- Confirms reachability to the target
+
 
 ### Checkpoint 5: UE IP and User Plane — 15 points
 
