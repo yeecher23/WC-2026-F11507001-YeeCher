@@ -61,13 +61,23 @@ Complete the table:
 Answer the following questions:
 
 1. What is the establishment cause in `RRCSetupRequest`?
-- 
+- UE asks gNb to establish a connection
 
-3. What SRB does `RRCSetupRequest` use? Why?
-4. Which side sends `RRCSetup`?
-5. Which signaling radio bearer is used after the RRC connection is established?
-6. Which NAS message is carried inside `RRCSetupComplete`?
-7. At the end of this procedure, is the UE only connected to the gNB, or is it already registered with the 5G Core? Explain.
+2. What SRB does `RRCSetupRequest` use? Why?
+- SRB0. Connection has not yet been established so UE have to communicate through the common control channel.
+
+3. Which side sends `RRCSetup`?
+- gNb
+
+4. Which signaling radio bearer is used after the RRC connection is established?
+- SRB1
+   
+5. Which NAS message is carried inside `RRCSetupComplete`?
+- dedicatedNAS-Message Registration Request
+
+
+6. At the end of this procedure, is the UE only connected to the gNB, or is it already registered with the 5G Core? Explain.
+- No. Establishing RRC connection does not mean network registration is complete.
 
 ### Checkpoint 3: RRC Connection Establishment — 35 points
 
