@@ -34,9 +34,9 @@ Complete the interface table:
 
 | Interface | Connected components | Main protocol | Purpose |
 |---|---|---|---|
-| N1 |  |  |  |
-| N2 |  |  |  |
-| N3 |  |  |  |
+| N1 | UE, AMF | NAS | UE sends registration messages to AMF via gNb |
+| N2 | gNb, AMF | NGAP | gNb sends gNb-core messages to AMF |
+| N3 | gNb, UPF | GTP-U | Tunnel for UE IP packets |
 
 The logical architecture is:
 
@@ -48,57 +48,26 @@ flowchart LR
     UPF --> DN[Data Network]
 ```
 
-### Checkpoint 2: Basic Architecture — 10 points
-
-- Correctly identify the five components and their IP addresses. — 5 points
-- Correctly explain N1, N2, and N3. — 5 points
-
----
-
 ## 6. Analyze the RRC Connection Establishment
-
-Apply:
-
-```wireshark
-nr-rrc
-```
-
-Find the following messages in order:
-
-1. `RRCSetupRequest`
-2. `RRCSetup`
-3. `RRCSetupComplete`
-
-You may also try these specific filters:
-
-```wireshark
-nr-rrc.rrcSetupRequest_element
-```
-
-```wireshark
-nr-rrc.rrcSetup_element
-```
-
-```wireshark
-nr-rrc.rrcSetupComplete_element
-```
 
 Complete the table:
 
 | Message | Direction | Logical channel / SRB | Main purpose | Packet number |
 |---|---|---|---|---:|
-| RRCSetupRequest |  |  |  |  |
-| RRCSetup |  |  |  |  |
-| RRCSetupComplete |  |  |  |  |
+| RRCSetupRequest | UE to gNb | UL-CCCH | UE requests connection from gNb | 104 |
+| RRCSetup | gNb to UE | DL-CCCH | Supplies connection settings and establishes SRB1 | 105 |
+| RRCSetupComplete | UE to gNb | UL-DCCH | Confirms setup | 108 |
 
 Answer the following questions:
 
 1. What is the establishment cause in `RRCSetupRequest`?
-2. What SRB does `RRCSetupRequest` use? Why?
-3. Which side sends `RRCSetup`?
-4. Which signaling radio bearer is used after the RRC connection is established?
-5. Which NAS message is carried inside `RRCSetupComplete`?
-6. At the end of this procedure, is the UE only connected to the gNB, or is it already registered with the 5G Core? Explain.
+- 
+
+3. What SRB does `RRCSetupRequest` use? Why?
+4. Which side sends `RRCSetup`?
+5. Which signaling radio bearer is used after the RRC connection is established?
+6. Which NAS message is carried inside `RRCSetupComplete`?
+7. At the end of this procedure, is the UE only connected to the gNB, or is it already registered with the 5G Core? Explain.
 
 ### Checkpoint 3: RRC Connection Establishment — 35 points
 
