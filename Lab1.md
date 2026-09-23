@@ -60,22 +60,22 @@ Complete the table:
 
 Answer the following questions:
 
-###1. What is the establishment cause in `RRCSetupRequest`?
+### 1. What is the establishment cause in `RRCSetupRequest`?
 - UE asks gNb to establish a connection
 
-###2. What SRB does `RRCSetupRequest` use? Why?
+### 2. What SRB does `RRCSetupRequest` use? Why?
 - SRB0. Connection has not yet been established so UE have to communicate through the common control channel.
 
-###3. Which side sends `RRCSetup`?
+### 3. Which side sends `RRCSetup`?
 - gNb
 
-###4. Which signaling radio bearer is used after the RRC connection is established?
+### 4. Which signaling radio bearer is used after the RRC connection is established?
 - SRB1
    
-###5. Which NAS message is carried inside `RRCSetupComplete`?
+### 5. Which NAS message is carried inside `RRCSetupComplete`?
 - dedicatedNAS-Message Registration Request
 
-###6. At the end of this procedure, is the UE only connected to the gNB, or is it already registered with the 5G Core? Explain.
+### 6. At the end of this procedure, is the UE only connected to the gNB, or is it already registered with the 5G Core? Explain.
 - No. Establishing RRC connection does not mean network registration is complete.
 
 ### Checkpoint 3: RRC Connection Establishment — 35 points
@@ -124,8 +124,8 @@ Compare the two packets:
 
 | Stage | Protocol message | Sender → receiver | Encapsulated information |
 |---|---|---|---|
-| Radio side | RRCSetupComplete |  |  |
-| Core side | NGAP InitialUEMessage |  |  |
+| Radio side | RRCSetupComplete | UE to gNb | <img width="2560" height="1504" alt="image" src="https://github.com/user-attachments/assets/cef50f7d-d931-469e-8fcd-c7872a3197a9" />|
+| Core side | NGAP InitialUEMessage | gNb to AMF | <img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/06f649d2-79ff-4944-81f3-553436180afe" />|
 
 Finally, locate:
 
