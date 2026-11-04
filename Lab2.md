@@ -214,7 +214,7 @@ Complete the table for `pattern1`:
 | Item | DL-heavy: A/B | Balanced: C |
 | --- | --- | --- |
 | Configuration capture filename | tdd-dl-heavy-sib1 | tdd-balanced-sib1 |
-| SIB1 packet number | 2 | |
+| SIB1 packet number | 2 | 2 |
 | `referenceSubcarrierSpacing` (kHz) | 30 | 30 |
 | `dl-UL-TransmissionPeriodicity` (ms) | 5 | 5 |
 | `nrofDownlinkSlots` | 7 | 2 |
@@ -286,6 +286,7 @@ Next, count the symbols over the **same 5 ms interval** shown in your diagrams. 
 | Balanced | 2.5| 2 | 68 | 64 | 8 |
 
 **Question:** Can two patterns have the same UL symbol count per period but provide different numbers of UL symbols per unit time? Explain using your two tables.
+- Yes. Both settings have 32 UL symbols per period, but balanced repeats twice within 5 ms. It therefore provides 64 UL symbols in 5 ms, compared with 32 for DL-heavy.
 
 ### 4.5 Connect SIB1 to the Performance Results
 
@@ -293,9 +294,9 @@ Use the supplied mapping between the reference configuration captures and scenar
 
 | Scenario | Reference TDD setting | JSON traffic direction | Configured UL symbol share (%) | Throughput (Mbps) | Packet loss (%) |
 | --- | --- | --- | ---: | ---: | ---: |
-| A | DL-heavy | | | | |
-| B | DL-heavy | | | | |
-| C | Balanced | | | | |
+| A | DL-heavy | Downlink | 22.86 | 90.654195 | 0.443 |
+| B | DL-heavy | Uplink | 22.86 | 109.117249 | 0.236 |
+| C | Balanced | Uplink | 45.71 | 124.416749 | 2.13 |
 
 Answer:
 
