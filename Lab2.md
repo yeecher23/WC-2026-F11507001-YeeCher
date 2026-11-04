@@ -59,11 +59,15 @@ Complete the table:
 
 | Scenario | Reverse value | Direction |
 | --- | ---: | --- |
-| A | | |
-| B | | |
-| C | | |
+| A | 1 | Downlink |
+| B | 0 | Uplink |
+| C | 0 | Uplink |
 
 **Question:** Does the traffic direction shown in the JSON match the scenario description? Show the proof.
+<img width="2000" height="1502" alt="image" src="https://github.com/user-attachments/assets/acb030f5-194b-4ab6-8a08-03f4d843ec29" />
+<img width="1998" height="1502" alt="image" src="https://github.com/user-attachments/assets/85c93a75-52cf-4aeb-b317-a31e211daa8a" />
+<img width="2008" height="1506" alt="image" src="https://github.com/user-attachments/assets/9b593442-2541-4fc5-b7db-0c8823a2b2de" />
+
 
 ## 4. Task 2 — Compare Throughput
 
