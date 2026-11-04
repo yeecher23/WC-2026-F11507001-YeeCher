@@ -68,7 +68,6 @@ Complete the table:
 <img width="1998" height="1502" alt="image" src="https://github.com/user-attachments/assets/85c93a75-52cf-4aeb-b317-a31e211daa8a" />
 <img width="2008" height="1506" alt="image" src="https://github.com/user-attachments/assets/9b593442-2541-4fc5-b7db-0c8823a2b2de" />
 
-
 ## 4. Task 2 — Compare Throughput
 
 In each JSON file, find:
@@ -87,9 +86,9 @@ Complete the table:
 
 | Scenario | Direction | Throughput (Mbps) |
 | --- | --- | ---: |
-| A | Downlink | |
-| B | Uplink | |
-| C | Uplink | |
+| A | Downlink | 90.654 |
+| B | Uplink | 109.117 |
+| C | Uplink | 128.687 |
 
 Calculate how much C improves over B:
 
@@ -100,9 +99,13 @@ Improvement (%) = (C - B) ÷ B × 100
 Answer:
 
 1. What is the downlink throughput in Scenario A?
+- 90.654 Mbps
 2. What is the uplink throughput in Scenario B?
+- 109.117 Mbps
 3. Is the uplink throughput higher in B or C?
+- C
 4. By approximately what percentage does C improve over B?
+- 17.935
 
 > Use the JSON `bits_per_second` value. Do not recalculate throughput using the other time fields.
 
