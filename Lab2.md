@@ -213,19 +213,21 @@ Complete the table for `pattern1`:
 
 | Item | DL-heavy: A/B | Balanced: C |
 | --- | --- | --- |
-| Configuration capture filename | | |
-| SIB1 packet number | | |
-| `referenceSubcarrierSpacing` (kHz) | | |
-| `dl-UL-TransmissionPeriodicity` (ms) | | |
-| `nrofDownlinkSlots` | | |
-| `nrofDownlinkSymbols` | | |
-| `nrofUplinkSlots` | | |
-| `nrofUplinkSymbols` | | |
-| Is `pattern2` present? | | |
+| Configuration capture filename | tdd-dl-heavy-sib1 | tdd-balanced-sib1 |
+| SIB1 packet number | 2 | |
+| `referenceSubcarrierSpacing` (kHz) | 30 | 30 |
+| `dl-UL-TransmissionPeriodicity` (ms) | 5 | 5 |
+| `nrofDownlinkSlots` | 7 | 2 |
+| `nrofDownlinkSymbols` | 6 | 6 |
+| `nrofUplinkSlots` | 2 | 2 |
+| `nrofUplinkSymbols` | 4 | 4 |
+| Is `pattern2` present? | No | No |
 
 If `pattern2` is present, add another table containing its period and four slot/symbol counts. It uses the same reference SCS.
 
 Take **one screenshot per configuration** showing the selected SIB1 packet and the expanded TDD fields. Include `pattern2` in an additional screenshot if it is present and does not fit.
+<img width="2560" height="1510" alt="image" src="https://github.com/user-attachments/assets/2b88ffbb-e4a8-4ae8-a9e0-96a398507ca8" />
+<img width="2560" height="1506" alt="image" src="https://github.com/user-attachments/assets/e5dbb8b7-ebc9-4eb6-b585-eddd7bd8652d" />
 
 ### 4.4 Draw the TDD Time Allocation
 
