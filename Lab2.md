@@ -301,9 +301,10 @@ Use the supplied mapping between the reference configuration captures and scenar
 Answer:
 
 1. Which decoded TDD parameters differ between DL-heavy and balanced?
+- 
 2. Which configuration provides more configured UL symbols per unit time? Support your answer with the diagram and calculated share.
-3. How does that difference help explain the B/C throughput comparison?
-4. Why can A and B use the same SIB1 TDD configuration even though their traffic directions differ?
+4. How does that difference help explain the B/C throughput comparison?
+5. Why can A and B use the same SIB1 TDD configuration even though their traffic directions differ?
 
 > More configured UL resources can provide more opportunities for uplink traffic, but they do not guarantee a proportional throughput increase. Scheduling, radio conditions, overhead, offered traffic, and other radio settings also affect the result. This comparison does not establish that the TDD pattern is the only cause of a performance difference. SIB1 does not show actual slot-by-slot data scheduling. Because the configuration captures were recorded separately, use them as references for the supplied settings, not as independent proof of what was broadcast during each original performance run.
 
