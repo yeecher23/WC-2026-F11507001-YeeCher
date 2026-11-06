@@ -301,10 +301,14 @@ Use the supplied mapping between the reference configuration captures and scenar
 Answer:
 
 1. Which decoded TDD parameters differ between DL-heavy and balanced?
-- 
-2. Which configuration provides more configured UL symbols per unit time? Support your answer with the diagram and calculated share.
-4. How does that difference help explain the B/C throughput comparison?
-5. Why can A and B use the same SIB1 TDD configuration even though their traffic directions differ?
+- The dl-UL-TransmissionPeriodicity changes from 5ms to 2.5ms, nrofDownlinkSlots changes from 7 to 2
+2. Which configuration provides more configured UL symbols per unit time?
+Support your answer with the diagram and calculated share.
+- The balanced configuration provides more. The diagram shows its pattern repeating twice in 5ms for balanced, while it it repeating repeating twice in 10ms for DL-heavy. UL symbol share is 45.71% for balanced compared with 22.68% for DL-heavy.
+3. How does that difference help explain the B/C throughput comparison?
+- C has more UL opportunities which increases its throughput. However, C also has higher packet loss than B so the difference in throughput gets reduced.
+4. Why can A and B use the same SIB1 TDD configuration even though their traffic directions differ?
+- A and B can use the same configuration because the DL-heavy setting allows both downloading and uploading. A tests the downlink, while B tests the uplink using the fewer available uplink opportunities.
 
 > More configured UL resources can provide more opportunities for uplink traffic, but they do not guarantee a proportional throughput increase. Scheduling, radio conditions, overhead, offered traffic, and other radio settings also affect the result. This comparison does not establish that the TDD pattern is the only cause of a performance difference. SIB1 does not show actual slot-by-slot data scheduling. Because the configuration captures were recorded separately, use them as references for the supplied settings, not as independent proof of what was broadcast during each original performance run.
 
@@ -341,9 +345,9 @@ Complete the table using the supplied scenario mapping, the SIB1 reference confi
 
 | Scenario | TDD setting | Traffic direction | Is the setting suitable for this direction? Why? |
 | --- | --- | --- | --- |
-| A | DL-heavy | Downlink | |
-| B | DL-heavy | Uplink | |
-| C | Balanced | Uplink | |
+| A | DL-heavy | Downlink | Yes. More DL resources provide more downlink transmission opportunities |
+| B | DL-heavy | Uplink | No. DL-heavy setting may limit heavy uplink traffic |
+| C | Balanced | Uplink | Yes. Balanced setting gives uplink traffic more opptorunities than DL-heavy |
 
 Use these ideas:
 
@@ -356,6 +360,7 @@ Use these ideas:
 > The configuration captures show the reference broadcast TDD settings. The iperf3 JSON reports performance; it does not contain TDD parameters. The scenario captures are used for traffic analysis and need not include SIB1.
 
 **Question:** Why might Scenario C achieve better uplink throughput than Scenario B? Refer to your SIB1 diagrams and measured results.
+- C provides 64 uplink symbols in 5 ms compared with 32 in B. This gives UE more opportunities to upload data which achieved 124.42 Mbps comparing with B's 109.12 Mbps.
 
 ## 8. Task 6 — Find GTP-U Information
 
