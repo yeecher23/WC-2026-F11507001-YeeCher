@@ -381,13 +381,13 @@ Record the following information from one packet:
 
 | Item | Value |
 | --- | --- |
-| Scenario capture filename | |
-| Packet number | |
-| Outer source IP | |
-| Outer destination IP | |
-| Inner source IP | |
-| Inner destination IP | |
-| TEID | |
+| Scenario capture filename | scenario-a-dl-heavy-downlink |
+| Packet number | 1833 |
+| Outer source IP | 192.168.70.134 |
+| Outer destination IP | 192.168.70.129 |
+| Inner source IP | 	192.168.70.135 |
+| Inner destination IP | 	10.0.0.6 |
+| TEID | 0xcddc4529 |
 
 Meaning:
 
@@ -396,6 +396,9 @@ Meaning:
 - **TEID:** Identifies the GTP-U tunnel at the receiving endpoint.
 
 Take one screenshot showing the selected packet and these fields.
+<img width="2560" height="1510" alt="image" src="https://github.com/user-attachments/assets/364a5923-e256-4478-ae3e-439b47774002" />
+<img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/4f1d07fa-2c4b-419b-8bcf-12386f75d288" />
+
 
 > Some GTP packets are echo or control-related packets. Select one that contains an inner IPv4 packet.
 
