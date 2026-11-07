@@ -429,6 +429,7 @@ Record the number of displayed packets:
 > Report the number displayed by Wireshark using the specified filter. Counts may vary with Wireshark analysis settings. Include screenshots showing the filter and displayed count for each scenario. The filter includes any TCP flows that Wireshark can decode in the capture; a displayed retransmission is not, by itself, proof of loss in the UDP test.
 
 **Question:** Do these TCP retransmissions directly represent lost UDP performance packets?
+- No. These retransmissions are flagged on the TCP control connection
 
 ## 10. Task 8 — RTT and Packet Interval
 
@@ -446,7 +447,7 @@ Select one packet from the iperf3 TCP control connection and record its ACK RTT:
 
 | Scenario | Packet number | Example TCP ACK RTT |
 | --- | ---: | --- |
-| A, B, or C | | |
+| A | 1857 | 16.024ms |
 
 This value is the RTT of the TCP control connection. It is not the RTT of the UDP data packets.
 
@@ -466,7 +467,7 @@ Record the scenario, display filter, packet numbers, and time interval.
 
 | Scenario | Display filter | Packet numbers | Time interval |
 | --- | --- | --- | --- |
-| | | | |
+| A | 	(gtp && udp.srcport == 5201 && !tcp) && (udp.stream == 519) | 1906 and 1909 | 77 microseconds |
 
 **Note:** The time interval depends on the applied display filter. Make sure the selected packets are distinct data packets, not duplicated observations from different capture points. Do not use their interval to infer the TDD slot pattern.
 
