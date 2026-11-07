@@ -476,13 +476,21 @@ Record the scenario, display filter, packet numbers, and time interval.
 Answer each question in two or three sentences:
 
 1. Does Scenario A use a TDD setting that matches its traffic direction?
+- Yes. A sends data downlink and its DL-heavy setting gives more symbols to downlink to downlink than uplink
 2. Why is Scenario B expected to have limited uplink resources? Cite a parameter or count from the DL-heavy SIB1 reference configuration.
+- It sends data uplink but uses the DL-heavy setting. Its SIB1 reference shows only 2 full uplink slots and 4 extra uplink symbols every 5 ms, which is 32 out of 140 symbols.
 3. How much does uplink throughput change from B to C?
+- Uplink throughput increased from 109.12 Mbps in B to 124.42 Mbps in C.
 4. What negative result, if any, is visible in C? Support your answer with packet loss or jitter values.
+  - C has higher packet loss. It loses 2.13% of packets compared with 0.236% in B
 5. Why can increasing UL resources improve uplink throughput?
+- More UL symbols give the device more chance to send data in the same amount of time
 6. Is adding more UL resources always the best solution? Explain using throughput and packet loss.
+- No. C achieved higher throughput but its packet loss also rose from 0.236% to 2.13%. So, the better setting depends on how much loss the application can tolerate.
 7. Suggest one simple follow-up test that could improve throughput without producing too much packet loss.
+- Keep the balanced setting and repeat the uplink test at several iperf3 sending rates. Pick the rate that gives the highest received throughput with lowest packet loss.
 8. What can the configuration captures tell you that the iperf3 JSON cannot? Why are separately recorded configuration captures not direct proof of the configuration during an earlier test?
+- SIB1 captures how the configured TDD pattern, including how many slots and symbols are set aside for uplink and downlink, while iperf3 JSON shows the test results. Since SIB1 captures were recorded separately, they show what was configured when they were captured and cannot confirm what was active during the earlier test
 
 ## 12. Submission Checklist
 
