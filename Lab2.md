@@ -418,9 +418,13 @@ Record the number of displayed packets:
 
 | Scenario | Displayed TCP retransmissions |
 | --- | ---: |
-| A | |
-| B | |
-| C | |
+| A | 14 |
+| B | 12 |
+| C | 12 |
+
+<img width="2560" height="1508" alt="image" src="https://github.com/user-attachments/assets/094b093b-e26f-4968-b8b7-8ad949775507" />
+<img width="2560" height="1508" alt="image" src="https://github.com/user-attachments/assets/3d745701-786d-4282-bb18-52c3ca7d1fe6" />
+<img width="2560" height="1516" alt="image" src="https://github.com/user-attachments/assets/d503f58e-9c47-4eb9-82b4-24863b66b9a4" />
 
 > Report the number displayed by Wireshark using the specified filter. Counts may vary with Wireshark analysis settings. Include screenshots showing the filter and displayed count for each scenario. The filter includes any TCP flows that Wireshark can decode in the capture; a displayed retransmission is not, by itself, proof of loss in the UDP test.
 
