@@ -55,21 +55,24 @@ Observe their terminal outputs and locate evidence of the following stages.
 
 | Stage | Successful? | Evidence from logs |
 |---|---|---|
-| CN5G initialization | | |
-| gNB NG Setup | | |
-| UE synchronization | | |
-| RRC connection establishment | | |
-| UE Registration | | |
-| PDU Session Establishment | | |
-| UE tunnel creation | | |
+| CN5G initialization | Yes |  |
+| gNB NG Setup | Yes | |
+| UE synchronization | Yes | |
+| RRC connection establishment | Yes | |
+| UE Registration | Yes | |
+| PDU Session Establishment | Yes | |
+| UE tunnel creation | Yes | |
 
 Take screenshots showing the gNB and UE successfully connected.
 
 **Questions:**
 
 1. Does a successful NG Setup guarantee that a UE can register? Explain.
+- No. A successful NG setup only establishes connection between the gNB and AMF in 5G core. The UE still needs to establish RRC connection with the gNB and authenticate with the core.
 2. Why can the UE establish an RRC connection but still fail Registration?
+- The RRC connection is only with the gNB. It still needs to authenticate with core network and can fail to register.
 3. What additional procedure is required after Registration before user data can be exchanged?
+- The UE needs to establish a PDU session. 
 
 ## 4. Task 2 — Investigate RFsimulator Communication
 
