@@ -55,13 +55,19 @@ Observe their terminal outputs and locate evidence of the following stages.
 
 | Stage | Successful? | Evidence from logs |
 |---|---|---|
-| CN5G initialization | Yes |  |
-| gNB NG Setup | Yes | |
-| UE synchronization | Yes | |
+| CN5G initialization | Yes | <img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/d78df6d3-4430-4318-8e19-5d4916f2a9e4" />
+ |
+| gNB NG Setup | Yes | <img width="2554" height="1512" alt="image" src="https://github.com/user-attachments/assets/3bc7ec51-1255-45ba-9e6d-a3b5439d05b8" />
+ |
+| UE synchronization | Yes | <img width="2560" height="1502" alt="image" src="https://github.com/user-attachments/assets/616dca57-47f2-450c-8f3a-88fdc854e75a" />
+ |
 | RRC connection establishment | Yes | |
-| UE Registration | Yes | |
-| PDU Session Establishment | Yes | |
-| UE tunnel creation | Yes | |
+| UE Registration | Yes | <img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/2e0475bb-d1d3-4e4b-9e10-0bb310385c6b" />
+ |
+| PDU Session Establishment | Yes | <img width="2558" height="1498" alt="image" src="https://github.com/user-attachments/assets/6a39f2ca-acb7-43d4-b4e8-316dcf67f0fd" />
+ |
+| UE tunnel creation | Yes | <img width="2560" height="1498" alt="image" src="https://github.com/user-attachments/assets/322baf3d-ed5d-4b42-beac-0aac6cb92d4d" />
+ |
 
 Take screenshots showing the gNB and UE successfully connected.
 
@@ -117,8 +123,11 @@ Take one screenshot showing the TCP connection.
 **Questions:**
 
 1. Why does RFsimulator use a TCP connection instead of a physical antenna?
+- The gNB and simulated UE send radio samples to each other over a TCP connection. This lets them run the radio link in software without transmitting a signal through the air.
 2. Are the TCP packets exchanged by RFsimulator the same as the UE's application-layer IP packets?
+- No. The TCP carries the simulated radio samples. An application packet like a ping is encoded into the samples and recovered at the other end.
 3. Does using RFsimulator mean that the UE and gNB are performing no physical-layer processing? Explain.
+- Yes. The gNB and UE still perform physical-layer processing. The simulator replaces the physical radio link between them.
 
 ## 5. Task 3 — Verify End-to-End Connectivity
 
