@@ -105,14 +105,15 @@ Complete the table:
 
 | Item | Observed Value |
 |---|---|
-| gNB process ID | |
-| nrUE process ID | |
-| RFsimulator transport protocol | |
-| RFsimulator port | |
-| TCP connection state | |
-| Connected process(es) | |
+| gNB process ID | 10666 |
+| nrUE process ID | 64989 |
+| RFsimulator transport protocol | TCP |
+| RFsimulator port | 4043 |
+| TCP connection state | ESTAB |
+| Connected process(es) | nr-softmdem (gNB) and nr-uesoftmodem (nrUE) |
 
 Take one screenshot showing the TCP connection.
+<img width="2560" height="1516" alt="image" src="https://github.com/user-attachments/assets/d16275c7-7d37-4901-a4fc-9f0bcc4cbd6a" />
 
 **Questions:**
 
@@ -141,22 +142,26 @@ Record:
 
 | Measurement | Observed Value |
 |---|---|
-| UE IP address | |
-| Destination IP | |
-| Packets transmitted | |
-| Packets received | |
-| Packet loss (%) | |
-| Minimum RTT (ms) | |
-| Average RTT (ms) | |
-| Maximum RTT (ms) | |
+| UE IP address | 10.0.0.2 |
+| Destination IP | 192.168.70.135 |
+| Packets transmitted | 10 |
+| Packets received | 10 |
+| Packet loss (%) | 0 |
+| Minimum RTT (ms) | 21.892 |
+| Average RTT (ms) | 29.592 |
+| Maximum RTT (ms) | 41.249 |
 
 Take a screenshot of the Ping result.
+<img width="2560" height="1502" alt="image" src="https://github.com/user-attachments/assets/2e4cb81c-c7b7-4411-a23d-1b338a25d7bb" />
 
 **Questions:**
 
 1. Why must Ping use the `oaitun_ue1` interface in this experiment?
+- Using it makes the ping travel through simulated 5G data path. Ubuntu could use a different network interface and a reply might not verify the UE's connection.
 2. Does successful Registration guarantee successful user-plane connectivity?
+- No. Registration shows UE registered to the 5G core. It still needs an established PDU session.
 3. What does a successful Ping prove, and what does it not prove about the simulated 5G system?
+- It proves that traffic could travel both ways through simulated 5G data path during the test. It does not measure maximum throughput
 
 ## 6. Task 4 — Investigate the Effect of Packet Size
 
@@ -188,9 +193,9 @@ Complete the table:
 
 | Scenario | ICMP Payload | Avg. RTT (ms) | Max. RTT (ms) | Packet Loss (%) |
 |---|---:|---:|---:|---:|
-| A | 56 bytes | | | |
-| B | 512 bytes | | | |
-| C | 1200 bytes | | | |
+| A | 56 bytes | 31.489 | 45.155 | 0 |
+| B | 512 bytes | 35.927 | 46.902 | 0 |
+| C | 1200 bytes | 42.628 | 66.985 | 0 |
 
 Calculate the RTT difference:
 
@@ -201,10 +206,15 @@ RTT Difference = Average RTT(C) - Average RTT(A)
 **Questions:**
 
 1. Which scenario has the highest average RTT?
-2. Does increasing packet size always increase RTT in your measurements?
-3. Why might a larger packet require more transmission or processing resources?
-4. What factors other than packet size could affect RTT in a software-based 5G network?
-5. Can these results be interpreted as real over-the-air 5G latency? Explain.
+- C. It has highest RTT at 42.628ms.
+3. Does increasing packet size always increase RTT in your measurements?
+- Average RTT increased across all scenarios from 31.489 to 35.927 to 42.628. However, individual pings did not always follow that pattern.
+4. Why might a larger packet require more transmission or processing resources?
+- It contains more bits to process and transmit. At the same transmission rate, more bits take longer to send.
+5. What factors other than packet size could affect RTT in a software-based 5G network?
+- CPU load, VM scheduling and packet queues. 
+6. Can these results be interpreted as real over-the-air 5G latency? Explain.
+- No. RFsimulator carries radio samples over TCP instead of sending them through antennas. 
 
 Do not assume that RTT must increase with packet size. Use your measured values to support your explanation.
 
