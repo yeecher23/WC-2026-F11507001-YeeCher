@@ -258,12 +258,12 @@ Complete the table:
 
 | Item | Observation |
 |---|---|
-| Modified parameter | |
-| UE synchronized with gNB? | |
-| RRC connection established? | |
-| Registration successful? | |
-| Error or rejection evidence | |
-| Likely cause | |
+| Modified parameter | Changed the UE's IMSI |
+| UE synchronized with gNB? | Yes. The UE completed the 4 step random access procedure |
+| RRC connection established? | Yes. The UE log showed state=NR_RRC_CONNECTED |
+| Registration successful? | No. The UE received registration reject |
+| Error or rejection evidence | <img width="2560" height="1518" alt="image" src="https://github.com/user-attachments/assets/39c43486-8370-4e30-8afc-4e726942d375" />|
+| Likely cause | Test IMSI was likely missing from the 5G core's subscriber database |
 
 If the expected registration rejection does not appear, report the actual logs instead of inventing a failure message.
 
@@ -295,29 +295,38 @@ Complete the comparison:
 
 | Feature | OAI RFsimulator | Physical 5G System |
 |---|---|---|
-| gNB and UE protocol stack | | |
-| OFDM signal processing | | |
-| Physical antennas | | |
-| RF hardware impairments | | |
-| Wireless propagation effects | | |
-| 5G Core connectivity | | |
+| gNB and UE protocol stack | The OAI gNB and software UE run the 5G NR protocols | The gNB and physical UE run the 5G NR protocols over a real radio link. |
+| OFDM signal processing | The software generates and decodes OFDM samples, which are exchanged over TCP | The transmitter generates OFDM samples and sends them as RF signals |
+| Physical antennas | No antennas are needed | Antennas transmit and receive RF signals |
+| RF hardware impairments | No physical RF hardware impairments | Real hardware can introduce effects such as amplifier distortion |
+| Wireless propagation effects | No physical propagation | The signal can weaken with distance, reflect off objects, and experience fading or interference |
+| 5G Core connectivity | 	The simulated UE can register with the 5G core, establish a PDU session and exchange IP traffic | A physical UE can do the same through a gNB connected to the 5G core |
 
 **Questions:**
 
 1. Which parts of the 5G system remain functional when physical RF hardware is replaced with RFsimulator?
+- The UE and gNB still perform OFDM processing, random access and RRC connection setup. The UE can also register with the 5G core, establish a PDU session and send IP traffic
 2. Why is RFsimulator useful for testing the 5G protocol stack?
+- It lets us test and troubleshoot the 5G protocol stack without needing antennas or radio hardware
 3. Why might latency and throughput differ between RFsimulator and a real 5G deployment?
+- CPU load, VM scheduling and the TCP exchange of radio samples could affect performance. In real 5G, available bandwidth, signal strength, interference and radio retransmissions also affect latency and throughput
 4. What would need to change if you wanted to test a physical UE instead of OAI nrUE?
+- The gNB would need compatible RF hardware and antennas in place of RFsimulator
 
 ## 9. Final Analysis
 
 Answer each question in three to five sentences.
 
 1. Describe the complete process from starting the OAI 5GC to successful user-plane connectivity.
+- Start the OAI 5G core containers. Then started gNB and confirmed it received NGSetupResponse from AMF. Then the nrUE connected. The core accepted the PDU session and assigned the UE 10.0.0.2. Then, verified with the pings.
 2. Explain the difference between an RFsimulator TCP connection and a 5G PDU Session.
+- TCP connection carries digital radio samples between nrUE and gNB. A PDU session gives the UE an IP data path through the 5G core to the data network.
 3. Based on your measurements, how did packet size affect RTT and packet loss?
+- As the ICMP increased from 56 to 512 to 1200 bytes, the average RTT increased from 31.489 to 35.927 to 42.628ms. All 3 runs received 30 out of 30 replies so packet loss was 0%
 4. Describe the registration failure you introduced and explain how you diagnosed and recovered from it.
+- Changed UE's IMSI. The log showed registration reject so points to a registration failure. Recovery step was to restart the UE with the original IMSI then verify the registration again.
 5. Identify two limitations of this simulated environment and explain how they might affect experimental results.
+- The setup does not use a physical radio link so the results do not capture real world interference or signal fading. Second, the UE, gNB and core share my VM's CPU resources so CPU load and VM scheduling can add delay and make measured RTT vary between runs.
 
 ## 10. Submission Checklist
 
