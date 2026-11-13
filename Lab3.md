@@ -55,19 +55,13 @@ Observe their terminal outputs and locate evidence of the following stages.
 
 | Stage | Successful? | Evidence from logs |
 |---|---|---|
-| CN5G initialization | Yes | <img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/d78df6d3-4430-4318-8e19-5d4916f2a9e4" />
- |
-| gNB NG Setup | Yes | <img width="2554" height="1512" alt="image" src="https://github.com/user-attachments/assets/3bc7ec51-1255-45ba-9e6d-a3b5439d05b8" />
- |
-| UE synchronization | Yes | <img width="2560" height="1502" alt="image" src="https://github.com/user-attachments/assets/616dca57-47f2-450c-8f3a-88fdc854e75a" />
- |
-| RRC connection establishment | Yes | |
-| UE Registration | Yes | <img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/2e0475bb-d1d3-4e4b-9e10-0bb310385c6b" />
- |
-| PDU Session Establishment | Yes | <img width="2558" height="1498" alt="image" src="https://github.com/user-attachments/assets/6a39f2ca-acb7-43d4-b4e8-316dcf67f0fd" />
- |
-| UE tunnel creation | Yes | <img width="2560" height="1498" alt="image" src="https://github.com/user-attachments/assets/322baf3d-ed5d-4b42-beac-0aac6cb92d4d" />
- |
+| CN5G initialization | Yes | <img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/d78df6d3-4430-4318-8e19-5d4916f2a9e4" />|
+| gNB NG Setup | Yes | <img width="2554" height="1512" alt="image" src="https://github.com/user-attachments/assets/3bc7ec51-1255-45ba-9e6d-a3b5439d05b8" />|
+| UE synchronization | Yes | <img width="2560" height="1502" alt="image" src="https://github.com/user-attachments/assets/616dca57-47f2-450c-8f3a-88fdc854e75a" />|
+| RRC connection establishment | Yes | <img width="2560" height="1510" alt="image" src="https://github.com/user-attachments/assets/7467c6be-d055-4d6a-987e-9203e0b06c6f" />|
+| UE Registration | Yes | <img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/2e0475bb-d1d3-4e4b-9e10-0bb310385c6b" />|
+| PDU Session Establishment | Yes | <img width="2558" height="1498" alt="image" src="https://github.com/user-attachments/assets/6a39f2ca-acb7-43d4-b4e8-316dcf67f0fd" />|
+| UE tunnel creation | Yes | <img width="2560" height="1498" alt="image" src="https://github.com/user-attachments/assets/322baf3d-ed5d-4b42-beac-0aac6cb92d4d" />|
 
 Take screenshots showing the gNB and UE successfully connected.
 
