@@ -174,7 +174,6 @@ Packet loss - 0%
 Average RTT - 29.434
 
 
-
 ---
 
 ## 5. Task 3 — Capture F1-C and F1-U in a single PCAP
@@ -244,27 +243,33 @@ f1ap
 
 Find and record these messages:
 
-| Message | Typical direction | Meaning |
-|---|---|---|
-| SCTP INIT / INIT_ACK / COOKIE_ECHO / COOKIE_ACK | DU ↔ CU | Establish SCTP association |
-| F1 Setup Request | DU → CU | DU initiates F1 connection and provides served-cell information |
-| F1 Setup Response | CU → DU | CU accepts F1 Setup |
-| GNBDUConfigurationUpdate | DU → CU | DU informs CU of configuration changes |
-| Initial UL RRC Message Transfer (RRC Setup Request) | DU → CU | UE initial RRC request forwarded to CU |
-| DL RRC Message Transfer (RRC Setup) | CU → DU | CU delivers RRC Setup toward UE |
-| UL RRC Message Transfer (RRC Setup Complete) | DU → CU | UE completes RRC procedure; NAS Registration Request can be carried inside |
-| UE Context Setup Request / Response | CU ↔ DU | Establish UE-specific resources/context |
-| DL RRC Message Transfer (RRC Reconfiguration) | CU → DU | CU sends further RRC configuration |
+| Message | Typical direction | Meaning | Evidence |
+|---|---|---|---|
+| SCTP INIT / INIT_ACK / COOKIE_ECHO / COOKIE_ACK | DU ↔ CU | Establish SCTP association | <img width="2560" height="384" alt="image" src="https://github.com/user-attachments/assets/d8cd2b59-6c2e-4d56-a8a3-e510a59522e3" /> |
+| F1 Setup Request | DU → CU | DU initiates F1 connection and provides served-cell information | <img width="2560" height="42" alt="image" src="https://github.com/user-attachments/assets/a20e20cf-5c62-48c0-829b-484cf633f121" /> |
+| F1 Setup Response | CU → DU | CU accepts F1 Setup | <img width="2560" height="48" alt="image" src="https://github.com/user-attachments/assets/e75baeac-0a1f-488a-b1ad-e11b6e61a6fc" /> |
+| GNBDUConfigurationUpdate | DU → CU | DU informs CU of configuration changes | <img width="2560" height="56" alt="image" src="https://github.com/user-attachments/assets/46b72220-0103-46c8-8bf7-c9ead6cbb82f" /> |
+| Initial UL RRC Message Transfer (RRC Setup Request) | DU → CU | UE initial RRC request forwarded to CU | <img width="2560" height="34" alt="image" src="https://github.com/user-attachments/assets/09c0fa25-f1d1-47ca-9d21-b494498f8c5a" /> |
+| DL RRC Message Transfer (RRC Setup) | CU → DU | CU delivers RRC Setup toward UE | <img width="2560" height="42" alt="image" src="https://github.com/user-attachments/assets/b88b31bc-fad8-433c-bcb7-a1c8a8b98feb" /> |
+| UL RRC Message Transfer (RRC Setup Complete) | DU → CU | UE completes RRC procedure; NAS Registration Request can be carried inside | <img width="2560" height="32" alt="image" src="https://github.com/user-attachments/assets/be59f936-9b2a-41ef-8573-d01243717f56" /> | 
+| UE Context Setup Request / Response | CU ↔ DU | Establish UE-specific resources/context | <img width="2560" height="46" alt="image" src="https://github.com/user-attachments/assets/7ccd7f3a-a895-484c-8736-a54209d62824" /> | 
+| DL RRC Message Transfer (RRC Reconfiguration) | CU → DU | CU sends further RRC configuration | <img width="2480" height="34" alt="image" src="https://github.com/user-attachments/assets/a90609c6-111b-4d19-8403-9337b7b46a85" /> |
+
 
 **Observed classroom sequence:** The successful capture contained SCTP association, F1 Setup Request/Response, DU Configuration Update/Acknowledgement, RRC Setup messages, Authentication signaling carried through RRC, UE Context Setup/Modification, and RRC Reconfiguration. The exact packet numbers and timing are **not fixed**.
 
 **Questions**
 
 1. Which node initiates F1 Setup, and which acknowledges it?
+- DU initiates F1 setup and CU acknowledges it
 2. Explain the difference between SCTP association establishment and F1 Setup.
+- SCTP association establishment is the connection between the CU and DU. F1 setup uses that connection to let DU introduce itself to the CU
 3. How can a NAS Registration Request be transported over F1-C?
+- It is carried by the UL RRC message transfer from DU to CU
 4. What is the role of UE Context Setup?
+- It lets the CU tell the DU what specific resources the UE needs
 5. Does F1 Setup alone prove successful UE Registration? Explain.
+- No. F1 setup only lets DU connect to the CU. UE still needs to register afterwards
 
 **Evidence:** Screenshot with F1 Setup Request/Response and screenshot with at least three UE-associated F1AP messages. Include packet numbers and source/destination addresses.
 
@@ -316,12 +321,20 @@ Identify the interface using the actual source/destination endpoints and configu
 **Questions**
 
 1. Which transport protocol carries F1-U?
+- UDP
 2. What does a GTP-U **TEID** identify?
+- It tells the receiving node which tunnel an incoming packet belongs to
 3. Which direction is `127.0.0.4 → 127.0.0.3` in this setup?
+- Uplink
 4. How would you distinguish F1-U from N3 in a packet capture?
+- Check the outer source and destination IP addresses. 
 5. Why do F1-C and F1-U use different transport protocols?
+- F1-C uses SCTP because control messages, such as F1 Setup and UE Context Setup, need reliable delivery and ordering within a stream. F1-U uses UDP so user data can be forwarded without waiting for transport-layer acknowledgements or retransmissions.
 
 **Evidence:** Screenshot of at least one GTP-U T-PDU, with outer IP addresses, UDP ports, message type, and TEID visible. Record the observed UL and DL packet counts (if both directions are present). Do not assume equal counts.
+<img width="2560" height="1526" alt="image" src="https://github.com/user-attachments/assets/c0f6cf69-07d2-431e-97e4-ebce1abf0a28" />
+<img width="2560" height="1498" alt="image" src="https://github.com/user-attachments/assets/0c4b8767-bd8d-426f-8b3a-663ee004c802" />
+
 
 ---
 
