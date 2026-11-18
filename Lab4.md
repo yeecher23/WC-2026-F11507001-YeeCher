@@ -327,9 +327,9 @@ Identify the interface using the actual source/destination endpoints and configu
 3. Which direction is `127.0.0.4 → 127.0.0.3` in this setup?
 - Uplink
 4. How would you distinguish F1-U from N3 in a packet capture?
-- Check the outer source and destination IP addresses. 
+- Check the outer source and destination IP addresses. F1-U runs between the DU and CU-UP, while the N3 runs between CU-UP and UPF
 5. Why do F1-C and F1-U use different transport protocols?
-- F1-C uses SCTP because control messages, such as F1 Setup and UE Context Setup, need reliable delivery and ordering within a stream. F1-U uses UDP so user data can be forwarded without waiting for transport-layer acknowledgements or retransmissions.
+- F1-C uses SCTP because setup instructions need to arrive reliably and in order. F1-U uses UDP so user data can keep moving even if a packet is lost
 
 **Evidence:** Screenshot of at least one GTP-U T-PDU, with outer IP addresses, UDP ports, message type, and TEID visible. Record the observed UL and DL packet counts (if both directions are present). Do not assume equal counts.
 <img width="2560" height="1526" alt="image" src="https://github.com/user-attachments/assets/c0f6cf69-07d2-431e-97e4-ebce1abf0a28" />
@@ -344,15 +344,16 @@ Complete the table:
 
 | Feature | Lab 3: Monolithic gNB | Lab 4: CU/DU Split |
 |---|---|---|
-| Number of RAN processes | | |
-| Location of RRC/PDCP | | |
-| Location of RLC/MAC/PHY | | |
-| F1-C interface present? | | |
-| F1-U interface present? | | |
-| UE connected to the same 5GC? | | |
-| End-to-end Ping works? | | |
+| Number of RAN processes | 1 | 2 |
+| Location of RRC/PDCP | gNB | CU |
+| Location of RLC/MAC/PHY | gNB | DU |
+| F1-C interface present? | No | Yes |
+| F1-U interface present? | No | Yes |
+| UE connected to the same 5GC? | Yes | No |
+| End-to-end Ping works? | Yes | Yes |
 
 Explain in **3–5 sentences** why splitting a gNB changes the internal RAN interfaces but does not change the UE's need for synchronization, registration and a PDU session.
+- In lab 3, the upper and lower radio layers run together in 1 gNB process. Whereas in lab 4, these layers run in separate CU and DU processes where F1-C is used for control signalling and F1-U for user data. In both setups, UE must still synchronise with the cell to communicate over the radio and register with the 5G core to access network services. And it also needs a PDU session to obtain an IP address and send data 
 
 ---
 
