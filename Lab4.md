@@ -91,12 +91,17 @@ grep -nE \
 ```
 
 **Record:** The CU and DU F1 addresses, the DU SSB frequency, and PRB count. If the local settings differ from the table above, adapt the following commands and capture filters accordingly.
+<img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/62b2d863-49ff-49d5-9409-35eed85b4bd1" />
+CU address - 127.0.0.3, DU address - 127.0.0.4, DU SSB freq - 630048, PRB count - 106
 
 **Questions**
 
 1. Which protocol layers mainly reside in the CU, and which reside in the DU?
+- RRC, SDAP and PDCP mainly reside in CU while RLC, MAC and PHY reside in the DU
 2. What is the purpose of the F1 interface?
+- It supports separate placement and upgrades of CU and DU functions
 3. Why must the UE radio frequency be compatible with the DU rather than taken blindly from the previous lab?
+- The UE needs to tune into the DU's specific frequency so that it can detect the cell's signal and connect
 
 ---
 
@@ -158,6 +163,17 @@ ping -I oaitun_ue1 -c 10 192.168.70.135
 ```
 
 **Evidence:** Screenshots of CU/DU startup, UE connection, and successful Ping. Record the observed UE IP, transmitted/received packets, packet loss, and average RTT. Do **not** invent values; they vary by machine.
+<img width="2560" height="1506" alt="image" src="https://github.com/user-attachments/assets/0654fbbe-8362-492b-aaa1-6149510e7599" />
+<img width="2560" height="1510" alt="image" src="https://github.com/user-attachments/assets/65efc336-871c-4717-b07a-06006c00d7ef" />
+<img width="2560" height="1514" alt="image" src="https://github.com/user-attachments/assets/074072b6-8076-4bad-85bc-d18b63c63692" />
+<img width="2560" height="1510" alt="image" src="https://github.com/user-attachments/assets/e017151d-8763-4197-8486-770452c0c24f" />
+UE IP - 10.0.0.2
+Transmitted packets - 10
+Received packets - 10
+Packet loss - 0%
+Average RTT - 29.434
+
+
 
 ---
 
