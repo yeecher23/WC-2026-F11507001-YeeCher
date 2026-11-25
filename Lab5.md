@@ -74,8 +74,10 @@ Run the following command on `Lab5-ue.log`:
 ```bash
 grep -nE 'Starting cell search|Initial sync successful' lab5-artifacts/Lab5-ue.log
 ```
+<img width="2170" height="276" alt="image" src="https://github.com/user-attachments/assets/bd0b008f-e2e8-47f0-ab42-593686c1cee6" />
 
 Record whether UE synchronization succeeded and the PCI value. Explain: after completing initial synchronization, what is the UE able to do?
+- UE synchronization succeeded. PCI value is 0. After initial synchronization, UE is able to read the cell's broadcast information. From SIB1, it learns the RACH configuration and sends a PRACH preamble to begin random access
 
 #### Step 2: Find MIB and SIB1 — 8 points
 
@@ -87,7 +89,11 @@ nr-rrc
 
 Find one `MIB` packet and one `SIB1` packet. Record the frame number of each and provide screenshots.
 
+<img width="2560" height="316" alt="image" src="https://github.com/user-attachments/assets/0acccb01-f350-4520-9b2a-0af362f40dde" />
+- Frame number 1 and 2
+
 MIB and SIB1 are repeatedly broadcast system-information messages. The UE must obtain the common configuration before it can continue the access procedure. Briefly explain the purpose of MIB and SIB1 for UE access.
+- MIB provides the UE with information on how to locate SIB1. SIB1 tells the UE if it can access the cell and provides the RACH configuration
 
 #### Step 3: Find Msg1 PRACH — 8 points
 
@@ -98,10 +104,12 @@ grep -nE 'PRACH' lab5-artifacts/Lab5-ue.log
 ```
 
 Record the Msg1 log line number. From the line that shows the actual PRACH transmission, find:
+<img width="2560" height="138" alt="image" src="https://github.com/user-attachments/assets/aee7afa6-312f-49fb-ab66-a14c02069e0b" />
+
 
 ```text
-frame.slot = ______
-preambleIndex = ______
+frame.slot = 19
+preambleIndex = 16
 ```
 
 Next, return to Wireshark. Clear the display filter, press `Cmd/Ctrl + F`, choose **Packet details** as the search scope, and search for:
@@ -113,24 +121,31 @@ RACH Preamble chosen
 After locating the PRACH event recorded by the gNB tracer, record:
 
 ```text
-RAPID = ______
+RAPID = 16
 ```
 
 This packet is displayed as `MAC-LTE RACH Preamble chosen`; it is the OAI tracer MAC-event format.
 
+<img width="2560" height="1498" alt="image" src="https://github.com/user-attachments/assets/61cfedf4-ab7d-4419-8e6f-575506f7b26b" />
+
 Submit one UE-log screenshot and one Wireshark screenshot. Briefly answer:
 
 1. Which Random Access message is this PRACH transmission?
+- MSG1
 2. At which `frame.slot` and with which `preambleIndex` does the UE log show transmission?
+- Frameslot 553.19 and preambleindex 16
 3. Does the Wireshark `RAPID` match the UE-log `preambleIndex`? What does this show?
+- Yes it matches. This shows that the PRACH preamble was successfully sent to the gNB
 
 #### Step 4: Find Msg2 RAR in Wireshark — 11 points
 
 Return to Wireshark and clear the display filter. Press `Cmd/Ctrl + F`, choose **Packet details** as the search scope, and search for `RAR` or `Random Access Response`. After locating the packet, record its frame number and find the following values in `MAC-NR RAR`:
 
+<img width="2560" height="1514" alt="image" src="https://github.com/user-attachments/assets/728092a3-21b4-4227-a15b-026a954002ff" />
+
 ```text
-RAPID = ______
-Temporary C-RNTI = ______
+RAPID = 16
+Temporary C-RNTI = 61982
 ```
 
 ### Task 2: Complete Random Access and RRC Connection Setup — 40 points
@@ -148,14 +163,19 @@ nr-rrc.rrcSetupRequest_element
 Expand `UL-CCCH-Message → rrcSetupRequest` and find:
 
 ```text
-Frame number = ______
-Context RNTI = ______
+Frame number = 491
+Context RNTI = 61982
 ```
+
+<img width="2560" height="1502" alt="image" src="https://github.com/user-attachments/assets/45053119-82b3-41c6-8ee9-b7fdfd6710f9" />
+
 
 Briefly answer:
 
 1. Does the `Context RNTI` match the `Temporary C-RNTI` in the Task 1 / Step 4 RAR? What does this show?
+- Yes it does. It means the gNB is able to send Msg2 to the UE
 2. Can you claim that the RRC connection has been established after seeing only `RRCSetupRequest`? Why or why not?
+- No. We need to wait for RRCSetupComplete before the connection is fully established
 
 #### Step 2: Find RRCSetup — 10 points
 
