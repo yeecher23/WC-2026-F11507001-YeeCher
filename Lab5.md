@@ -173,7 +173,7 @@ Context RNTI = 61982
 Briefly answer:
 
 1. Does the `Context RNTI` match the `Temporary C-RNTI` in the Task 1 / Step 4 RAR? What does this show?
-- Yes it does. It means the gNB is able to send Msg2 to the UE
+- Yes it does. It shows that the UE is using the temporary identifier/RNTI when sending RRCsetuprequest to gNB
 2. Can you claim that the RRC connection has been established after seeing only `RRCSetupRequest`? Why or why not?
 - No. We need to wait for RRCSetupComplete before the connection is fully established
 
@@ -185,20 +185,26 @@ Clear the previous filter and enter:
 nr-rrc.rrcSetup_element
 ```
 
+<img width="2560" height="1508" alt="image" src="https://github.com/user-attachments/assets/b5ab3512-f060-4e02-a53f-fe963d881433" />
+
+
 Expand `DL-CCCH-Message → rrcSetup` and find:
 
 ```text
-Frame number = ______
-Context RNTI = ______
-rrc-TransactionIdentifier = ______
+Frame number = 492
+Context RNTI = 61982
+rrc-TransactionIdentifier = 1
 ```
 
 Check whether `Contention Resolution` also appears in the packet.
-
+- Yes
+  
 Below the screenshot, briefly answer:
 
 1. Which message is this in four-step Random Access?
+- Msg4
 2. What does it mean that `Contention Resolution` and `RRCSetup` appear in the same downlink message?
+- The gNB confirms which UE's Msg3 was received and sends that UE its RRC configuration in the same configuration. 
 
 #### Step 3: Find RRCSetupComplete — 12 points
 
@@ -218,15 +224,20 @@ RLC-NR → PDCP-NR → NR Radio Resource Control (RRC) protocol
 Expand `message: c1` further and confirm that it contains `rrcSetupComplete`. Record:
 
 ```text
-Frame number = ______
-Context RNTI = ______
-rrc-TransactionIdentifier = ______
+Frame number = 498
+Context RNTI = 61982
+rrc-TransactionIdentifier = 1
 ```
+
+<img width="2560" height="1512" alt="image" src="https://github.com/user-attachments/assets/7dcb733a-2268-4a30-8441-c7aa40486ca1" />
+
 
 Below the screenshot, briefly answer:
 
 1. Does the `Context RNTI` still match the `Temporary C-RNTI` in the RAR?
+- Yes
 2. Does the `rrc-TransactionIdentifier` match the `RRCSetup` in Step 2? What is the purpose of this comparison?
+- Yes. It shows that the UE is sending rrc setup complete to the same gNB which sent it the rrcsetup in the earlier step
 
 #### Step 4: Confirm the Final Random Access and RRC Connection Result — 8 points
 
@@ -237,19 +248,24 @@ grep -nE '4-Step RA procedure succeeded|Received NR_RRCSetup|RRCSetupComplete|St
   lab5-artifacts/Lab5-ue.log
 ```
 
+<img width="2560" height="252" alt="image" src="https://github.com/user-attachments/assets/c2334bca-412a-4d2a-83ab-f9580ef92878" />
+
+
 From the output, record:
 
 ```text
-4-Step RA procedure succeeded: line ______
-Received NR_RRCSetup: line ______
-State = NR_RRC_CONNECTED: line ______
-Generating RRCSetupComplete: line ______
+4-Step RA procedure succeeded: line 87
+Received NR_RRCSetup: line 88
+State = NR_RRC_CONNECTED: line 90
+Generating RRCSetupComplete: line 93
 ```
 
 Submit a screenshot of this log output and briefly answer:
 
 1. In log order, what are the three events from successful Random Access to generating `RRCSetupComplete`?
+- 4 step RA procedure success, receiving NR-RRCsetup and NR_RRC_connected state 
 2. What do `4-Step RA procedure succeeded` and `State = NR_RRC_CONNECTED` each prove?
+- 4step RA procedure succeeded proves that the UE successfully completed random access from Msg1 to Msg4. State=NR_RRC_CONNECTED proves that UE has successfully established a radio connection with gNB
 
 ### Task 3: Draw an Initial Access MSC Diagram — 25 points
 
@@ -271,6 +287,8 @@ Determine and draw the correct order and direction of the messages yourself. Add
 | Task 2: Key-message analysis | 40 |
 | Task 3: Initial Access MSC diagram | 25 |
 | **Total** | **100** |
+
+<img width="1416" height="992" alt="image" src="https://github.com/user-attachments/assets/afe08827-a125-4033-87ff-523c68631063" />
 
 ## 7. Optional: Reproduce the Log and PCAP Files
 
